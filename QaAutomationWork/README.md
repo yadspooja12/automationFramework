@@ -1,0 +1,2 @@
+# Automation framework using Webdriver manager.
+This POM automation framework using WebDriver Manager. WebDriverManager is a library which allows to automate the management of the binary drivers (e.g. chromedriver, geckodriver, etc.) required by Selenium WebDriver.For more info please visit https://github.com/bonigarcia/webdrivermanager. This framework contains test cases to verify breadcrumb on UI.
