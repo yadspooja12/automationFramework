@@ -8,10 +8,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.Test.YourLogoTestBase;
-
 import pageobjects.SearchPage;
+import static com.google.common.truth.Truth.*;
 
 public class SearchTest extends YourLogoTestBase{
 
@@ -33,11 +32,16 @@ public class SearchTest extends YourLogoTestBase{
 		search.searchButton.click();
 		wait.until(ExpectedConditions.visibilityOfAllElements(search.searchedproducts));
 	    int products= search.searchedproducts.size();
+	    // usual way to put assertion.
+	    /*Assert.assertEquals(products, 5, "products not found");
+	       System.out.println(products);*/
 	    
-	    Assert.assertEquals(products, 5, "products not found");
-	    System.out.println(products);
-	    
+	    // Below are the assertions using Truth framework.
+	   assertThat(products).isEqualTo(5);
+	   assertThat(products).isNotNull();
 	}
+	     
+	
 	
 	@Test (description="Validate that first product is clickable or not.")
 	public void productIsClickable() {
