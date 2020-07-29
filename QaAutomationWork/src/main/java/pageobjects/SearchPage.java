@@ -35,6 +35,17 @@ public class SearchPage {
 	@FindBy(css="h1[itemprop='name']")
 	public WebElement productName;
 	
+
+	@FindBy(css="#uniform-selectProductSort")
+	public WebElement sortHover;
+	
+	@FindBy(css="#selectProductSort")
+	public WebElement ProductSort;
+	
+	@FindBy(css="span.price.product-price")
+	public List<WebElement> productPrices;
+	
+	
 	
 	
 	

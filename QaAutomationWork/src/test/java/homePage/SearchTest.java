@@ -12,53 +12,50 @@ import com.Test.YourLogoTestBase;
 import pageobjects.SearchPage;
 import static com.google.common.truth.Truth.*;
 
-public class SearchTest extends YourLogoTestBase{
+public class SearchTest extends YourLogoTestBase {
 
-	
 	SearchPage search;
-	
-	
+
 	@BeforeMethod
 	public void setUp() {
 		initialize();
 		search = new SearchPage(driver);
 	}
-	
-	
-	@Test (description="Validate that product seached are displayed on page.")
+
+	@Test(description = "Validate that product seached are displayed on page.")
 	public void validSearch() {
 		search.searchTextBox.click();
 		search.searchTextBox.sendKeys("printed dress");
 		search.searchButton.click();
 		wait.until(ExpectedConditions.visibilityOfAllElements(search.searchedproducts));
-	    int products= search.searchedproducts.size();
-	    // usual way to put assertion.
-	    /*Assert.assertEquals(products, 5, "products not found");
-	       System.out.println(products);*/
-	    
-	    // Below are the assertions using Truth framework.
-	   assertThat(products).isEqualTo(5);
-	   assertThat(products).isNotNull();
+		int products = search.searchedproducts.size();
+		// { usual way to put assertion.
+		/*
+		 * Assert.assertEquals(products, 5, "products not found");
+		 * System.out.println(products);
+		 */
+		// Below are the assertions using Truth framework.
+
+		assertThat(products).isEqualTo(5);
+		assertThat(products).isNotNull();
 	}
-	     
-	
-	
-	@Test (description="Validate that first product is clickable or not.")
+
+	@Test(description = "Validate that first product is clickable or not.")
 	public void productIsClickable() {
 		search.searchTextBox.click();
 		search.searchTextBox.sendKeys("printed dress");
 		search.searchButton.click();
-		String ExpectedName=search.NameOfFirstItem .getText();
+		String ExpectedName = search.NameOfFirstItem.getText();
 		search.firstProduct.click();
-		String name= search.productName.getText();
+		String name = search.productName.getText();
 		Assert.assertEquals(name, ExpectedName, "Product not found");
 		System.out.println(name);
 	}
-	
+
 	@AfterMethod
 	public void closeDriver() {
-		if(driver!=null)
-		driver.close();
+		if (driver != null)
+			driver.close();
 	}
-	
+
 }
